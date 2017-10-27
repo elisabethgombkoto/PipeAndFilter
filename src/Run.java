@@ -1,5 +1,8 @@
 import pmp.solution.ExerciseA.Input;
+import pmp.solution.ExerciseA.LineInGlossary;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -7,21 +10,43 @@ import java.util.ArrayList;
  */
 public class Run {
 
-  public static void main(String[] args) {
- String path = "C:\\Users\\Elisabeth\\IdeaProjects\\PipeAndFilter\\src\\pmp\\source\\test";
-    Input input = new Input(path);
-    ArrayList<LineInGlossary> list = input.readFile();
+    private String sourcePath = "";
+    private String destPath = "";
 
-    for (int i=0; list.size()< i; i++)
-    {
-      if (list.isEmpty()) {
-        System.out.print("empty");
-      }else {
-      LineInGlossary lg = list.get(i);
-      System.out.print(lg.get_index());
-      System.out.print(lg.get_string());
-      }
-    }
+     public Run (){
+         sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test";
+         destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
+     }
+
+     public ArrayList<LineInGlossary> readSource(){
+         Input input = new Input(sourcePath);
+         ArrayList<LineInGlossary> list = input.readFile();
+         return list;
+     }
+
+     public void print(){
+         ArrayList<LineInGlossary> source = readSource();
+         for (int i=0; source.size()< i; i++)
+         {
+             if (source.isEmpty()) {
+                 System.out.print("empty");
+             }else {
+                 LineInGlossary lg = source.get(i);
+                 System.out.print(lg.get_index());
+                 System.out.print(lg.get_string());
+             }
+         }
+
+     }
+
+  public static void main(String[] args) {
+
+      Run start = new Run();
+      start.print();
+
+
+
+
 
   }
 }
