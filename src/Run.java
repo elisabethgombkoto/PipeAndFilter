@@ -3,6 +3,7 @@ import pmp.solution.ExerciseA.LineInGlossary;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,25 +22,24 @@ public class Run {
          this.work = work;
      }
 
-     public ArrayList<LineInGlossary> readSource(){
+     public String readSource(){
          Input input = new Input(sourcePath);
-         ArrayList<LineInGlossary> list = input.readFile();
-         return list;
+       String list = null;
+       try {
+         list = input.read();
+       } catch (StreamCorruptedException e) {
+
+       }
+       return list;
      }
 
      public void print(){
-         ArrayList<LineInGlossary> source = readSource();
-         for (int i=0; source.size()< i; i++)
-         {
-             if (source.isEmpty()) {
-                 System.out.print("empty");
-             }else {
-                 LineInGlossary lg = source.get(i);
-                 System.out.print(lg.get_index());
-                 System.out.print(lg.get_string());
-             }
-         }
-
+       String source = readSource();
+       if (source.isEmpty()) {
+         System.out.print("empty");
+       }else {
+         System.out.print(source);
+       }
      }
 
   public static void main(String[] args) {

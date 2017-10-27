@@ -8,11 +8,12 @@ import java.lang.reflect.Array;
 import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Elisabeth on 27.10.2017.
  */
-public class Input extends Source<String> implements Readable<String>, Runnable{
+public class Input extends Source<String> implements Readable<String>, Runnable {
 
   private String _path;
 
@@ -21,42 +22,33 @@ public class Input extends Source<String> implements Readable<String>, Runnable{
     _path = path;
   }
 
-  public ArrayList<LineInGlossary> readFile() {
 
-    ArrayList<LineInGlossary> lines = new ArrayList<LineInGlossary>();
-    int lineindex=0;
-
-    try (BufferedReader br = new BufferedReader(new FileReader(new File(_path)))) {
-
-      while (this.read() != null) {
-        String s = this.read();
-        LineInGlossary line = new LineInGlossary(lineindex+1, s);
-        lines.add(lineindex, line);
-        lineindex++;
-      }
-    } catch (FileNotFoundException e1) {
-      e1.printStackTrace();
-    } catch (IOException e1) {
-      e1.printStackTrace();
-    }
-    return lines;
-  }
 
   @Override
   public String read() throws StreamCorruptedException {
-    String s = null ;
-    try (BufferedReader br = new BufferedReader(new FileReader(new File(_path)))) {
-
-      while ((s = br.readLine()) != null) {
-        s = br.readLine();
-
-      }
-    } catch (FileNotFoundException e1) {
-      e1.printStackTrace();
-    } catch (IOException e1) {
-      e1.printStackTrace();
+    File file = new File(_path);
+    StringBuilder fileContents = new StringBuilder((int)file.length());
+    Scanner scanner = null;
+    try {
+      scanner = new Scanner(file);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
-    return s;
-  }
+    String lineSeparator = System.getProperty("line.separator");
 
+    try {
+      while(scanner.hasNextLine()) {
+        fileContents.append(scanner.nextLine() + lineSeparator);
+      }
+      return fileContents.toString();
+    } finally {
+      scanner.close();
+    }
+  }
 }
+
+
+
+
+
+

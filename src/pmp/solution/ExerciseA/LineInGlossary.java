@@ -13,6 +13,7 @@ public class LineInGlossary {
     _s=s;
   }
 
+
   public int get_index() {
     return _i;
   }
