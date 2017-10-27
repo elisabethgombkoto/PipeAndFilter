@@ -1,6 +1,7 @@
 package pmp.solution.ExerciseA;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,38 +17,25 @@ public class Input {
     _path = path;
   }
 
-  public List<LineInGolossary> readFile() {
-    List<LineInGolossary> lines = new ArrayList<LineInGolossary>();
-    InputStream ins = null; // raw byte-stream
-    Reader r = null; // cooked reader
-    BufferedReader br = null; // buffered for readLine()
+  public ArrayList<LineInGlossary> readFile() {
 
+    ArrayList<LineInGlossary> lines = new ArrayList<LineInGlossary>();
+    int lineindex=0;
 
-    try {
+    try (BufferedReader br = new BufferedReader(new FileReader(new File(_path)))) {
       String s;
-      if (true) {
-        String data = "#foobar\t1234\n#xyz\t5678\none\ttwo\n";
-        ins = new ByteArrayInputStream(data.getBytes());
-      } else {
-        ins = new FileInputStream("textfile.txt");
-      }
-      r = new InputStreamReader(ins, "UTF-8"); // leave charset out for default
-      br = new BufferedReader(r);
-      int index = 0;
-
       while ((s = br.readLine()) != null) {
-        LineInGolossary line = new LineInGolossary (index+1, s);
-        lines.add(index, line);
+        LineInGlossary line = new LineInGlossary(lineindex+1, s);
+        lines.add(lineindex, line);
+        lineindex++;
+
+        //System.out.print(line.get_index());
+       // System.out.println(line.get_string());
       }
-    }
-    catch (Exception e)
-    {
-      System.err.println(e.getMessage()); // handle exception
-    }
-    finally {
-      if (br != null) { try { br.close(); } catch(Throwable t) { /* ensure close happens */ } }
-      if (r != null) { try { r.close(); } catch(Throwable t) { /* ensure close happens */ } }
-      if (ins != null) { try { ins.close(); } catch(Throwable t) { /* ensure close happens */ } }
+    } catch (FileNotFoundException e1) {
+      e1.printStackTrace();
+    } catch (IOException e1) {
+      e1.printStackTrace();
     }
     return lines;
   }
