@@ -29,8 +29,8 @@ public class Input {
         lines.add(lineindex, line);
         lineindex++;
 
-        //System.out.print(line.get_index());
-       // System.out.println(line.get_string());
+        System.out.print(line.get_index());
+       System.out.println(line.get_string());
       }
     } catch (FileNotFoundException e1) {
       e1.printStackTrace();

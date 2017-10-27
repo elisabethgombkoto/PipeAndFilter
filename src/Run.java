@@ -1,8 +1,6 @@
 import pmp.solution.ExerciseA.Input;
-import pmp.solution.ExerciseA.LineInGlossary;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Elisabeth on 23.10.2017.
