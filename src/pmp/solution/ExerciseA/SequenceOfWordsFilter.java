@@ -21,10 +21,11 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], L
   protected List<LineFromSequenceOfWords> process(String[] entity) {
     String[] words = null;
     List<LineFromSequenceOfWords> listOfLines = new ArrayList<>();
+    int lineIndex = 1;
     for (String line : entity ) {
        words = line.split("/\\s*\\b\\s*/");
-      LineFromSequenceOfWords myLine = new LineFromSequenceOfWords(words);
-      listOfLines.add(myLine);
+      LineFromSequenceOfWords myLine = new LineFromSequenceOfWords(lineIndex, words);
+      listOfLines.add(lineIndex-1, myLine);
     }
     return listOfLines;
   }

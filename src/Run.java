@@ -1,8 +1,11 @@
 import pmp.solution.ExerciseA.Input;
+import pmp.solution.ExerciseA.LineFromSequenceOfWords;
 import pmp.solution.ExerciseA.LineSeparatorFilter;
+import pmp.solution.ExerciseA.SequenceOfWordsFilter;
 
 import java.io.File;
 import java.io.StreamCorruptedException;
+import java.util.List;
 
 /**
  * Created by Elisabeth on 23.10.2017.
@@ -52,10 +55,13 @@ public class Run {
     Run start = new Run();
     Input input = new Input(file);
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
-    String[] sarray = lineNummberFilter.read();
+    SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
+    List<LineFromSequenceOfWords> list = sequenceOfWordsFilter.read();
 
-    for (String s:sarray) {
-      System.out.println(s);
+    for (LineFromSequenceOfWords s: list) {
+      for (String a : s.get_sequenceOfwords() ) {
+        System.out.println(a);
+      }
     }
 
      /*
