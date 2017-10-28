@@ -37,9 +37,9 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], L
     StringBuilder st = null;
     int k = 0;
     int index = 0;
-    while (k<chars.length) {
+    while (k<chars.length-1) {
       if (Character.isLetter(chars[k])){
-        while (Character.isLetter(chars[k]) && k<chars.length) {
+        while (Character.isLetter(chars[k]) && k<chars.length-1) {
           if (st != null) {
             st.append(chars[k]);
             k++;
