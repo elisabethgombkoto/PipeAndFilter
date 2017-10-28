@@ -55,9 +55,13 @@ public class Run {
     File file = new File(classLoader.getResource("./pmp/source/test").getFile());
     Run start = new Run();
     Input input = new Input(file);
-    String s = input.read();
+    LineNummberFilter lineNummberFilter = new LineNummberFilter(input);
+    String[] sarray = lineNummberFilter.read();
 
-    System.out.print(s);
+    for (String s:sarray) {
+      System.out.println(s);
+    }
+
      /*
       System.out.println("Enter 'a' or 'b' ");
       Scanner scanner = new Scanner(System.in);
