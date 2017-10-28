@@ -9,9 +9,9 @@ import java.util.ArrayList;
 /**
  * Created by Elisabeth on 27.10.2017.
  */
-public class LineNummberFilter extends DataTransformationFilter2<String , String[]> {
+public class LineSeparatorFilter extends DataTransformationFilter2<String , String[]> {
 
-  public LineNummberFilter(Readable<String> input) throws InvalidParameterException {
+  public LineSeparatorFilter(Readable<String> input) throws InvalidParameterException {
     super(input);
   }
 

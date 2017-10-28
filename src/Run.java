@@ -1,12 +1,8 @@
 import pmp.solution.ExerciseA.Input;
-import pmp.solution.ExerciseA.LineInGlossary;
-import pmp.solution.ExerciseA.LineNummberFilter;
+import pmp.solution.ExerciseA.LineSeparatorFilter;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.StreamCorruptedException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by Elisabeth on 23.10.2017.
@@ -29,7 +25,7 @@ public class Run {
  *
      public String readSource(){
          Input input = new Input(_sourcePath);
-       LineNummberFilter lineNummberFilter = new LineNummberFilter(input)
+       LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input)
        String list = null;
        try {
          list = input.read();
@@ -55,7 +51,7 @@ public class Run {
     File file = new File(classLoader.getResource("./pmp/source/test").getFile());
     Run start = new Run();
     Input input = new Input(file);
-    LineNummberFilter lineNummberFilter = new LineNummberFilter(input);
+    LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
     String[] sarray = lineNummberFilter.read();
 
     for (String s:sarray) {
