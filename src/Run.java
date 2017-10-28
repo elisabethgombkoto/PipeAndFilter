@@ -55,12 +55,16 @@ public class Run {
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
     CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
 
-    List<LineFromSequenceOfWords> list = sequenceOfWordsFilter.read();
+    List<Line> list = sequenceOfWordsFilter.read();
 
-    for (LineFromSequenceOfWords s: list) {
-      for (String a : s.get_sequenceOfwords() ) {
-        System.out.println(a);
+    for (Line s: list) {
+      for (int i = 0; i<s.get_sequenceOfwords().size(); i++){
+        String a = s.get_sequenceOfwords().get(i);
+        System.out.print(s.get_lineIndex()+ " ");
+        System.out.print(a + "\n");
+
       }
+
     }
 
      /*

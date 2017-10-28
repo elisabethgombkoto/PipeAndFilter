@@ -10,57 +10,64 @@ import java.util.List;
 /**
  * Created by Elisabeth on 27.10.2017.
  */
-public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], List<LineFromSequenceOfWords>> {
+public class SequenceOfWordsFilter extends DataTransformationFilter2<List<Line>, List<Line>> {
 
 
-  public SequenceOfWordsFilter(Readable<String[]> input) throws InvalidParameterException {
+  public SequenceOfWordsFilter(Readable<List<Line>> input) throws InvalidParameterException {
     super(input);
   }
 
   @Override
-  protected List<LineFromSequenceOfWords> process(String[] entity) {
-    String[] words = null;
-    List<LineFromSequenceOfWords> listOfLines = new ArrayList<>();
+  protected List<Line> process(List<Line> entity) {
+    List<String> words;
+    List<Line> listOfLines = new ArrayList<>();
     int lineIndex = 1;
-    for (String line : entity ) {
-       words = splitLineToWords(line);
-      LineFromSequenceOfWords myLine = new LineFromSequenceOfWords(lineIndex, words);
+    for (int i=0; i < entity.size(); i++) {
+      Line line = entity.get(i);
+      if(line.getisEmpty()){
+        words = new ArrayList<>();
+        words.add(new String(""));
+      }else {
+        words =  splitLineToWords(line);
+      }
+      Line myLine = new Line(lineIndex, words);
       listOfLines.add(lineIndex-1, myLine);
     }
     return listOfLines;
   }
 
-  private String[] splitLineToWords(String line) {
-
-    String[] result = new String[line.length()];
-    char[] chars = line.toCharArray();
+  private List<String> splitLineToWords(String line) {
+    ArrayList<String> words = new ArrayList<>();
     StringBuilder st = null;
-    int k = 0;
-    int index = 0;
-    while (k<chars.length-1) {
-      if (Character.isLetter(chars[k])){
-        while (Character.isLetter(chars[k]) && k<chars.length-1) {
-          if (st != null) {
-            st.append(chars[k]);
-            k++;
-          } else {
-            st = new StringBuilder();
-            st.append(chars[k]);
-            k++;
-          }
+    for(int i = 0; i<line.toCharArray().length; i++){
+      char c = line.toCharArray()[i];
+      if(Character.isLetter(c)){  //is a letter
+        if(st!=null){
+          st.append(c);// if it is not null then include a letter
+        }else {
+          st = new StringBuilder().append(c);
         }
-        result[index] = st.toString();
-        index++;
-      }
-      if (!Character.isLetter(chars[k])) {
-        st = new StringBuilder(chars[k]);
-        st.append(chars[k]);
-        k++;
-        result[index] = st.toString();
-        index++;
-        st = null;
+      }else { // is not a letter
+        if(st!=null){ // but st include alredy something
+          words.add(st.toString()); //put to array st
+          st = new StringBuilder().append(c); //builed a new Stringbuilder whit the NOT letter char
+          words.add(st.toString()); //put to array st
+          st = null;// set st to null again
+        }else {
+          st = new StringBuilder().append(c); //builed a new Stringbuilder whit the NOT letter char
+          words.add(st.toString()); //put to array st
+          st = null;// set st to null again
+        }
       }
     }
-    return result;
+    if(st!=null){
+      //put to array st whit the letters
+      // if the last char is not a later then st is null
+      // and we do not have to empty the st
+      words.add(st.toString());
+    }
+
+
+   return words;
   }
 }
