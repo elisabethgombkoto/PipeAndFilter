@@ -1,7 +1,4 @@
-import pmp.solution.ExerciseA.Input;
-import pmp.solution.ExerciseA.LineFromSequenceOfWords;
-import pmp.solution.ExerciseA.LineSeparatorFilter;
-import pmp.solution.ExerciseA.SequenceOfWordsFilter;
+import pmp.solution.ExerciseA.*;
 
 import java.io.File;
 import java.io.StreamCorruptedException;
@@ -56,7 +53,9 @@ public class Run {
     Input input = new Input(file);
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
-    List<LineFromSequenceOfWords> list = sequenceOfWordsFilter.read();
+    CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
+
+    List<LineFromSequenceOfWords> list = circularShiftFilter.read();
 
     for (LineFromSequenceOfWords s: list) {
       for (String a : s.get_sequenceOfwords() ) {
