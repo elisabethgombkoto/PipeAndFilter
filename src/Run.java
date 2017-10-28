@@ -55,7 +55,7 @@ public class Run {
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
     CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
 
-    List<LineFromSequenceOfWords> list = circularShiftFilter.read();
+    List<LineFromSequenceOfWords> list = sequenceOfWordsFilter.read();
 
     for (LineFromSequenceOfWords s: list) {
       for (String a : s.get_sequenceOfwords() ) {
