@@ -1,5 +1,6 @@
 import pmp.solution.ExerciseA.Input;
 import pmp.solution.ExerciseA.LineInGlossary;
+import pmp.solution.ExerciseA.LineNummberFilter;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,16 +13,18 @@ import java.util.Scanner;
  */
 public class Run {
 
-    private String sourcePath = "";
-    private String destPath = "";
-    private String work = "";
+    private String _sourcePath = "";
+    private String _destPath = "";
+    private String _work = "";
+
 
      public Run (String work){
-         sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test";
-         destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
-         this.work = work;
-     }
 
+         _sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test";
+         _destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
+         _work = work;
+     }
+ *
      public String readSource(){
          Input input = new Input(sourcePath);
        String list = null;
@@ -49,6 +52,9 @@ public class Run {
       System.out.println("You selected " + selected);
 
       Run start = new Run(selected);
+
+    Input input = new Input(sourcePath);
+    LineNummberFilter lineNummberFilter = new LineNummberFilter(input);
       start.print();
 
 
