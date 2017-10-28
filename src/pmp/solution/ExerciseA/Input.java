@@ -15,22 +15,22 @@ import java.util.Scanner;
  */
 public class Input extends Source<String> implements Readable<String>, Runnable {
 
-  private String _path;
+  private File _file;
 
-  public Input(String path) {
+  public Input(File file) {
 
-    _path = path;
+    _file = file;
   }
 
 
 
   @Override
   public String read() throws StreamCorruptedException {
-    File file = new File(_path);
-    StringBuilder fileContents = new StringBuilder((int)file.length());
+
+    StringBuilder fileContents = new StringBuilder((int)_file.length());
     Scanner scanner = null;
     try {
-      scanner = new Scanner(file);
+      scanner = new Scanner(_file);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }

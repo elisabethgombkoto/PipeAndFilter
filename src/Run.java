@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Created by Elisabeth on 23.10.2017.
  */
 public class Run {
-
+/*
     private String _sourcePath = "";
     private String _destPath = "";
     private String _work = "";
@@ -22,11 +22,14 @@ public class Run {
 
          _sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test";
          _destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
+
+
          _work = work;
      }
  *
      public String readSource(){
-         Input input = new Input(sourcePath);
+         Input input = new Input(_sourcePath);
+       LineNummberFilter lineNummberFilter = new LineNummberFilter(input)
        String list = null;
        try {
          list = input.read();
@@ -44,8 +47,18 @@ public class Run {
          System.out.print(source);
        }
      }
+*/
+  public static void main(String[] args) throws StreamCorruptedException {
 
-  public static void main(String[] args) {
+    Run run = new Run();
+    ClassLoader classLoader = run.getClass().getClassLoader();
+    File file = new File(classLoader.getResource("./pmp/source/test").getFile());
+    Run start = new Run();
+    Input input = new Input(file);
+    String s = input.read();
+
+    System.out.print(s);
+     /*
       System.out.println("Enter 'a' or 'b' ");
       Scanner scanner = new Scanner(System.in);
       String selected = scanner.nextLine();
@@ -53,11 +66,10 @@ public class Run {
 
       Run start = new Run(selected);
 
-    Input input = new Input(sourcePath);
-    LineNummberFilter lineNummberFilter = new LineNummberFilter(input);
+
       start.print();
 
-
+*/
 
 
 

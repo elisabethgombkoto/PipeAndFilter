@@ -17,11 +17,8 @@ public class LineNummberFilter extends DataTransformationFilter2<String , String
 
   @Override
   protected String[] process(String entity) {
-    if (entity.isEmpty()){
-// EXCEPTION
-    }
-    String text = new String(entity);
-    String textStr[] = text.split("\\r\\n|\\n|\\r");
-    return textStr;
+      String text = new String(entity);
+      String textStr[] = text.split("\\r\\n|\\n|\\r");
+      return textStr;
   }
 }
