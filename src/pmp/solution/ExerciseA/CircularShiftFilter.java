@@ -29,9 +29,8 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
       String[] current = words;
 
       for (int j = 0; j<words.length; j++){// so lange rufe ich die methode auf bis ich die line ende bin
-        listOfShiftedLines.add(new LineFromSequenceOfWords(i, current));
+        listOfShiftedLines.add(new LineFromSequenceOfWords(entity.get(i).get_lineIndex(), current));
         String[] shiftedLines = shiftTheWordsToRight(current);
-
         current = shiftedLines;
       }
     }

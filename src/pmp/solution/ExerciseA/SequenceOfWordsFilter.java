@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], List<LineFromSequenceOfWords>> {
 
-
   public SequenceOfWordsFilter(Readable<String[]> input) throws InvalidParameterException {
     super(input);
   }
@@ -26,6 +25,7 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], L
        words = splitLineToWords(line);
       LineFromSequenceOfWords myLine = new LineFromSequenceOfWords(lineIndex, words);
       listOfLines.add(lineIndex-1, myLine);
+      lineIndex++;
     }
     return listOfLines;
   }
