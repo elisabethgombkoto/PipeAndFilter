@@ -24,7 +24,7 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<List<Line>,
     int lineIndex = 1;
     for (int i=0; i < entity.size(); i++) {
       Line line = entity.get(i);
-      if(line.getisEmpty()){
+      if(line.get_line().isEmpty()){
         words = new ArrayList<>();
         words.add(new String(""));
       }else {
@@ -36,11 +36,11 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<List<Line>,
     return listOfLines;
   }
 
-  private List<String> splitLineToWords(String line) {
+  private List<String> splitLineToWords(Line line) {
     ArrayList<String> words = new ArrayList<>();
     StringBuilder st = null;
-    for(int i = 0; i<line.toCharArray().length; i++){
-      char c = line.toCharArray()[i];
+    for(int i = 0; i<line.get_line().toCharArray().length; i++){
+      char c = line.get_line().toCharArray()[i];
       if(Character.isLetter(c)){  //is a letter
         if(st!=null){
           st.append(c);// if it is not null then include a letter
