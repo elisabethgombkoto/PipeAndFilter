@@ -1,5 +1,8 @@
 package pmp.solution.ExerciseA;
 
+import pmp.interfaces.IOable;
+import pmp.interfaces.Readable;
+
 import java.util.List;
 
 /**

@@ -1,36 +1,128 @@
+import pmp.pipes.SimplePipe;
 import pmp.solution.ExerciseA.*;
 
 import java.io.File;
 import java.io.StreamCorruptedException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
- * Created by Elisabeth on 20.10.2017.
+ * Created by Elisabeth on 23.10.2017.
  */
 public class Run {
+  String selected;
+  ClassLoader classLoader;
+  File file;
+  Input input;
+  LineSeparatorFilter lineNummberFilter;
+  SequenceOfWordsFilter sequenceOfWordsFilter;
+  CircularShiftFilter circularShiftFilter;
+  AlphabeticallyOrderedCircularShifts alphabeticOrdered;
 
-  public static void main(String[] args) throws StreamCorruptedException {
+  public Run(String str){
+    selected = str;
+    try {
+      runMethod();
+    } catch (StreamCorruptedException e) {
+      e.printStackTrace();
+    }
+  }
 
-    Run run = new Run();
-    ClassLoader classLoader = run.getClass().getClassLoader();
-    File file = new File(classLoader.getResource("./pmp/source/test").getFile());
-    Input input = new Input(file);
-    LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
-    SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
+  private void runMethod() throws StreamCorruptedException {
+    switch (selected){
+      case "a": runA(); break;
+      case "b": runB(); break;
+      default: runA();
+    }
+  }
 
-    CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
-    AlphabeticallyOrderedCircularShifts alphabeticOrdered = new AlphabeticallyOrderedCircularShifts(circularShiftFilter);
+  private void runA() throws StreamCorruptedException {
+    runInit();
+    input = new Input(file);
+    SimplePipe<String> sp1 = new SimplePipe<String>(input);
+
+    lineNummberFilter = new LineSeparatorFilter(sp1);
+    SimplePipe<String[]> sp2 = new SimplePipe<String[]>(lineNummberFilter);
+
+    sequenceOfWordsFilter = new SequenceOfWordsFilter(sp2);
+    SimplePipe<List<LineFromSequenceOfWords>> sp3 = new SimplePipe<List<LineFromSequenceOfWords>>(sequenceOfWordsFilter);
+
+    circularShiftFilter = new CircularShiftFilter(sp3);
+    SimplePipe<List<LineFromSequenceOfWords>> sp4 = new SimplePipe<List<LineFromSequenceOfWords>>((pmp.interfaces.Readable<List<LineFromSequenceOfWords>>) circularShiftFilter);
+
+    alphabeticOrdered = new AlphabeticallyOrderedCircularShifts(sp4);
+
 
     List<LineFromSequenceOfWords> list = alphabeticOrdered.read();
 
     for (LineFromSequenceOfWords s: list) {
       System.out.println();
-        System.out.print("Index: " + s.get_lineIndex() + "   ");
+      System.out.print("Index: " + s.get_lineIndex() + "   ");
       for (String a : s.get_sequenceOfwords() ) {
 
         System.out.print(a + " ");
       }
     }
+  }
+
+  private void runB(){
+    runInit();
+  }
+
+  private void runInit(){
+    classLoader = getClass().getClassLoader();
+    file = new File(classLoader.getResource("./pmp/source/test.txt").getFile());
+
+  }
+
+
+/*
+    private String _sourcePath = "";
+    private String _destPath = "";
+    private String _work = "";
+
+
+     public Run (String work){
+
+         _sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test.txt";
+         _destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
+
+
+         _work = work;
+     }
+ *
+     public String readSource(){
+         Input input = new Input(_sourcePath);
+       LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input)
+       String list = null;
+       try {
+         list = input.read();
+       } catch (StreamCorruptedException e) {
+
+       }
+       return list;
+     }
+
+     public void print(){
+       String source = readSource();
+       if (source.isEmpty()) {
+         System.out.print("empty");
+       }else {
+         System.out.print(source);
+       }
+     }
+*/
+  public static void main(String[] args) throws StreamCorruptedException {
+    System.out.println("Enter 'a' or 'b' ");
+    Scanner scanner = new Scanner(System.in);
+    String selected = scanner.nextLine();
+    System.out.println("You selected " + selected);
+    Run run = new Run(selected);
+
+
+
+
 
 
      /*
@@ -41,7 +133,7 @@ public class Run {
 
       Run start = new Run(selected);
 
-        a
+
       start.print();
 
 */

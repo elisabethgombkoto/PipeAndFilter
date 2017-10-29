@@ -6,6 +6,7 @@ import java.security.InvalidParameterException;
 import pmp.interfaces.IOable;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
+import pmp.solution.ExerciseA.CircularShiftFilter;
 
 public class SimplePipe<T> implements IOable<T, T> {
 	
@@ -38,7 +39,8 @@ public class SimplePipe<T> implements IOable<T, T> {
         m_Input = input;
 	}
 
-	public T read() throws StreamCorruptedException {
+
+    public T read() throws StreamCorruptedException {
 		if ( m_Input == null )
             throw new InvalidParameterException("input filter can't be null!");
 		
