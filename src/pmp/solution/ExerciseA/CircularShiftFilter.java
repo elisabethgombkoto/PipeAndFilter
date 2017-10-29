@@ -3,10 +3,10 @@ package pmp.solution.ExerciseA;
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Elisabeth on 28.10.2017.
@@ -22,6 +22,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
 
   @Override
   protected List<LineFromSequenceOfWords> process(List<LineFromSequenceOfWords> entity) {
+    HashSet<String> stopWords = new HashSet<>(getStopwords());
 
     List<LineFromSequenceOfWords> listOfShiftedLines = new ArrayList<>();
     for (int i = 0; i<entity.size(); i++){
@@ -29,6 +30,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
       String[] current = words;
 
       for (int j = 0; j<words.length; j++){// so lange rufe ich die methode auf bis ich die line ende bin
+        if(!stopWords.contains(current[0]))   //wenn ein Stopwort am lineanfang vorkommt, wird keine line in die List geschrieben.
         listOfShiftedLines.add(new LineFromSequenceOfWords(entity.get(i).get_lineIndex(), current));
         String[] shiftedLines = shiftTheWordsToRight(current);
         current = shiftedLines;
@@ -45,6 +47,23 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
     }
     str[0]= temp;
     return str;
+  }
+
+  // Erstellt ein HashSet mit Stopwörter aus der Datei stopwords.txt
+  private HashSet<String> getStopwords(){
+    File file = new File("C:\\Users\\Bernd\\IdeaProjects\\WS2017\\PaF\\PipeAndFilter\\src\\pmp\\source\\stopwords.txt");
+    //pmp/source/stopwords.txt
+    Scanner sc = null;
+    try {
+      sc = new Scanner(file);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    HashSet<String> stopWordsSet = new HashSet<>();
+    while (sc.hasNext()) {
+      stopWordsSet.add(sc.next().trim());
+    }
+    return stopWordsSet;
   }
 
 
