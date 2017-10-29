@@ -5,18 +5,21 @@ import pmp.interfaces.Readable;
 import pmp.pipes.SimplePipe;
 
 import java.security.InvalidParameterException;
+import java.util.List;
 
 /**
  * Created by Elisabeth on 29.10.2017.
  */
-public class WordConstructorFilter<S> extends DataTransformationFilter2<SimplePipe,String> {
+public class WordConstructorFilter extends DataTransformationFilter2<String,List<String>> {
 
-  public WordConstructorFilter(Readable<SimplePipe> input) throws InvalidParameterException {
+
+  public WordConstructorFilter(Readable<String> input) throws InvalidParameterException {
     super(input);
   }
 
   @Override
-  protected String process(SimplePipe entity) {
+  protected List<String> process(String entity) {
     return null;
   }
+
 }

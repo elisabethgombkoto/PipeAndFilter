@@ -2,6 +2,7 @@ package pmp.solution.ExerciseA;
 
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
+import pmp.interfaces.Writeable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +19,10 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
 
   public CircularShiftFilter(Readable<List<LineFromSequenceOfWords>> input) throws InvalidParameterException {
     super(input);
+  }
+
+  public CircularShiftFilter (Readable<List<LineFromSequenceOfWords>> input, Writeable<List<LineFromSequenceOfWords>> output){
+    super(input, output);
   }
 
   @Override

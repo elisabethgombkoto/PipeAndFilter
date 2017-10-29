@@ -2,14 +2,16 @@ package pmp.solution.ExerciseA;
 
 import pmp.interfaces.IOable;
 import pmp.interfaces.Readable;
+import pmp.pipes.SimplePipe;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Elisabeth on 28.10.2017.
  * a line whit the words in this line
  */
-public class LineFromSequenceOfWords implements Comparable<LineFromSequenceOfWords>{
+public class LineFromSequenceOfWords implements Comparable<LineFromSequenceOfWords>, Serializable{
 
   private String[] _sequenceOfwords;
   private int _lineIndex;
@@ -21,7 +23,8 @@ public class LineFromSequenceOfWords implements Comparable<LineFromSequenceOfWor
 
 
 
- @Override//this function is required to sort a List of Objects
+
+  @Override//this function is required to sort a List of Objects
   public int compareTo(LineFromSequenceOfWords other) {
     //as we will compare only strings, we need to compare them
    //in alphabetical order
