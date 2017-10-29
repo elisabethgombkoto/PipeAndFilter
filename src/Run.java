@@ -80,6 +80,7 @@ public class Run {
       }
       System.out.println(" --> get next line" + "\n");
     }
+
  /*
     CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
 
