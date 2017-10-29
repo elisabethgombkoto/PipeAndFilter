@@ -30,10 +30,12 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
       String[] current = words;
 
       for (int j = 0; j<words.length; j++){// so lange rufe ich die methode auf bis ich die line ende bin
-        if(!stopWords.contains(current[0]))   //wenn ein Stopwort am lineanfang vorkommt, wird keine line in die List geschrieben.
-        listOfShiftedLines.add(new LineFromSequenceOfWords(entity.get(i).get_lineIndex(), current));
-        String[] shiftedLines = shiftTheWordsToRight(current);
-        current = shiftedLines;
+        if(!stopWords.contains(current[0])) {  //wenn ein Stopwort am lineanfang vorkommt, wird keine line in die List geschrieben.
+          listOfShiftedLines.add(new LineFromSequenceOfWords(entity.get(i).get_lineIndex(), current));
+        }
+          String[] shiftedLines = shiftTheWordsToRight(current);
+          current = shiftedLines;
+
       }
     }
     return listOfShiftedLines;
@@ -52,7 +54,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
   // Erstellt ein HashSet mit Stopwörter aus der Datei stopwords.txt
   private HashSet<String> getStopwords(){
     File file = new File(System.getProperty("user.dir") + "\\src\\pmp\\source\\stopwords.txt");
-    //pmp/source/stopwords.txt
+
     Scanner sc = null;
     try {
       sc = new Scanner(file);
@@ -63,6 +65,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
     while (sc.hasNext()) {
       stopWordsSet.add(sc.next().trim());
     }
+    stopWordsSet.add("");
     return stopWordsSet;
   }
 
