@@ -51,7 +51,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
 
   // Erstellt ein HashSet mit Stopwörter aus der Datei stopwords.txt
   private HashSet<String> getStopwords(){
-    File file = new File("C:\\Users\\Bernd\\IdeaProjects\\WS2017\\PaF\\PipeAndFilter\\src\\pmp\\source\\stopwords.txt");
+    File file = new File(System.getProperty("user.dir") + "\\src\\pmp\\source\\stopwords.txt");
     //pmp/source/stopwords.txt
     Scanner sc = null;
     try {

@@ -48,7 +48,7 @@ public class Run {
 
     Run run = new Run();
     ClassLoader classLoader = run.getClass().getClassLoader();
-    File file = new File(classLoader.getResource("./pmp/source/test").getFile());
+    File file = new File(classLoader.getResource("./pmp/source/aliceInWonderland.txt").getFile());
     Run start = new Run();
     Input input = new Input(file);
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
@@ -58,10 +58,11 @@ public class Run {
     List<LineFromSequenceOfWords> list = circularShiftFilter.read();
 
     for (LineFromSequenceOfWords s: list) {
-        System.out.println("List-Reference-Adresse: " + s.get_lineIndex());
+      System.out.println();
+        System.out.print("Index: " + s.get_lineIndex() + "   ");
       for (String a : s.get_sequenceOfwords() ) {
 
-        System.out.println("    Print Lines from this Reference: " + a);
+        System.out.print(a + " ");
       }
     }
       System.out.println(10%3);
