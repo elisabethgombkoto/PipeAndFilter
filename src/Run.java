@@ -54,17 +54,19 @@ public class Run {
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
     CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
+    AlphabeticallyOrderedCircularShifts alphabeticallyOrderedCircularShifts = new AlphabeticallyOrderedCircularShifts(circularShiftFilter);
 
-    List<LineFromSequenceOfWords> list = circularShiftFilter.read();
+
+    List<LineFromSequenceOfWords> list =alphabeticallyOrderedCircularShifts.read();
 
     for (LineFromSequenceOfWords s: list) {
-        System.out.println("List-Reference-Adresse: " + s.get_lineIndex());
+        System.out.print("Lineindex " + s.get_lineIndex() + " ");
       for (String a : s.get_sequenceOfwords() ) {
 
-        System.out.println("    Print Lines from this Reference: " + a);
+        System.out.print("\t"+ a + " ");
       }
+      System.out.print("\n");
     }
-      System.out.println(10%3);
 
      /*
       System.out.println("Enter 'a' or 'b' ");

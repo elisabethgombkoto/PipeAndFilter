@@ -1,9 +1,12 @@
 package pmp.solution.ExerciseA;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,6 +22,7 @@ public class AlphabeticallyOrderedCircularShifts extends DataTransformationFilte
 
   @Override
   protected List<LineFromSequenceOfWords> process(List<LineFromSequenceOfWords> entity) {
-    return null;
+         Collections.sort(entity);
+    return entity;
   }
 }
