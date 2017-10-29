@@ -53,6 +53,7 @@ public class Run {
     Input input = new Input(file);
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
+
     CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
     AlphabeticallyOrderedCircularShifts alphabeticOrdered = new AlphabeticallyOrderedCircularShifts(circularShiftFilter);
 
