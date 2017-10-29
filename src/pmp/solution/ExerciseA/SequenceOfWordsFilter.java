@@ -32,6 +32,7 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<List<Line>,
       }
       Line myLine = new Line(lineIndex, words);
       listOfLines.add(lineIndex-1, myLine);
+      lineIndex++;
     }
     return listOfLines;
   }
