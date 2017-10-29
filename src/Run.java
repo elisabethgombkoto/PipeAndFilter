@@ -55,7 +55,7 @@ public class Run {
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
     CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
 
-    List<LineFromSequenceOfWords> list = sequenceOfWordsFilter.read();
+    List<LineFromSequenceOfWords> list = circularShiftFilter.read();
 
     for (LineFromSequenceOfWords s: list) {
         System.out.println("List-Reference-Adresse: " + s);

@@ -5,6 +5,7 @@ import pmp.interfaces.Readable;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,8 +29,9 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
       String[] current = words;
 
       for (int j = 0; j<words.length; j++){// so lange rufe ich die methode auf bis ich die line ende bin
+        listOfShiftedLines.add(new LineFromSequenceOfWords(i, current));
         String[] shiftedLines = shiftTheWordsToRight(current);
-        listOfShiftedLines.add(new LineFromSequenceOfWords(i, shiftedLines));
+
         current = shiftedLines;
       }
     }
@@ -37,12 +39,13 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<LineFrom
   }
 
   private String[] shiftTheWordsToRight(String[] currentWordsArray) {
-    String temp = currentWordsArray[currentWordsArray.length - 1];
-    for (int i = currentWordsArray.length -2; i>-1; i--){
-      currentWordsArray[i+1] = currentWordsArray[i];
+    String[] str = Arrays.copyOf(currentWordsArray, currentWordsArray.length);
+    String temp = str[str.length - 1];
+    for (int i = str.length -2; i>-1; i--){
+      str[i+1] = str[i];
     }
-    currentWordsArray[0]= temp;
-    return currentWordsArray;
+    str[0]= temp;
+    return str;
   }
 
 
