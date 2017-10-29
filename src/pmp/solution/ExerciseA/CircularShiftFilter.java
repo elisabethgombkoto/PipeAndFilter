@@ -28,7 +28,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<Line>,Li
       List<String> words = entity.get(i).get_sequenceOfwords();
       List<String> current = words;
 
-      for (int j = 0; j<words.length; j++){// so lange rufe ich die methode auf bis ich die line ende bin
+      for (int j = 0; j<words.size(); j++){// so lange rufe ich die methode auf bis ich die line ende bin
         listOfShiftedLines.add(new Line(i, current));
         List<String> shiftedLines = shiftTheWordsToRight(current);
         current = shiftedLines;
@@ -38,6 +38,14 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<Line>,Li
   }
 
   private List<String> shiftTheWordsToRight(List<String> currentWordsArray) {
+    List<String > str = currentWordsArray;
+    String temp = str.get(str.size()-1);
+    for (int i = str.size()-2; i>-1; i--){
+      str.add(i+1, str.get(i));
+    }
+    str.add(0, temp);
+    return str;
+/*
     List<String> str = Arrays.copyOf(currentWordsArray, currentWordsArray.length);
     String temp = str[str.length - 1];
     for (int i = str.length -2; i>-1; i--){
@@ -45,7 +53,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<Line>,Li
     }
     str[0]= temp;
     return str;
-
+*/
   }
 
 
