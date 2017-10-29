@@ -22,10 +22,12 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], L
     List<LineFromSequenceOfWords> listOfLines = new ArrayList<>();
     int lineIndex = 1;
     for (String line : entity ) {
-       words = splitLineToWords(line);
-      LineFromSequenceOfWords myLine = new LineFromSequenceOfWords(lineIndex, words);
-      listOfLines.add(lineIndex-1, myLine);
-      lineIndex++;
+      if(!line.isEmpty()) {   //leere lines werden nicht akzeptiert
+        words = splitLineToWords(line);
+        LineFromSequenceOfWords myLine = new LineFromSequenceOfWords(lineIndex, words);
+        listOfLines.add(lineIndex - 1, myLine);
+        lineIndex++;
+      }
     }
     return listOfLines;
   }
@@ -64,8 +66,8 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], L
       }
     }
      **/
-    String[] result = line.split("\\W+");
 
+    String[] result = line.split("\\W+");
     return result;
   }
 }

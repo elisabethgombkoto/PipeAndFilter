@@ -16,7 +16,7 @@ public class Run {
 
      public Run (String work){
 
-         _sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test";
+         _sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test.txt";
          _destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
 
 
@@ -48,7 +48,7 @@ public class Run {
 
     Run run = new Run();
     ClassLoader classLoader = run.getClass().getClassLoader();
-    File file = new File(classLoader.getResource("./pmp/source/test").getFile());
+    File file = new File(classLoader.getResource("./pmp/source/test.txt").getFile());
     Run start = new Run();
     Input input = new Input(file);
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
