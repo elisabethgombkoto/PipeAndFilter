@@ -48,14 +48,15 @@ public class Run {
 
     Run run = new Run();
     ClassLoader classLoader = run.getClass().getClassLoader();
-    File file = new File(classLoader.getResource("./pmp/source/aliceInWonderland.txt").getFile());
+    File file = new File(classLoader.getResource("./pmp/source/test").getFile());
     Run start = new Run();
     Input input = new Input(file);
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);
     CircularShiftFilter circularShiftFilter = new CircularShiftFilter(sequenceOfWordsFilter);
+    AlphabeticallyOrderedCircularShifts alphabeticOrdered = new AlphabeticallyOrderedCircularShifts(circularShiftFilter);
 
-    List<LineFromSequenceOfWords> list = circularShiftFilter.read();
+    List<LineFromSequenceOfWords> list = alphabeticOrdered.read();
 
     for (LineFromSequenceOfWords s: list) {
       System.out.println();
@@ -65,7 +66,7 @@ public class Run {
         System.out.print(a + " ");
       }
     }
-      System.out.println(10%3);
+
 
      /*
       System.out.println("Enter 'a' or 'b' ");
