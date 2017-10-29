@@ -32,7 +32,7 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], L
 
   private String[] splitLineToWords(String line) {
 
-    String[] result = new String[line.length()];
+    /**String[] result = new String[line.length()];
     char[] chars = line.toCharArray();
     StringBuilder st = null;
     int k = 0;
@@ -52,15 +52,20 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<String[], L
         result[index] = st.toString();
         index++;
       }
-      if (!Character.isLetter(chars[k])) {
+      if (!Character.isLetter(chars[k]) && !Character.isSpaceChar(chars[k])) {
         st = new StringBuilder(chars[k]);
+        System.out.println("NO LETTER darum Null  --  K= : "+ k);
         st.append(chars[k]);
+        System.out.println("Char K = " + chars[k]);
         k++;
         result[index] = st.toString();
         index++;
         st = null;
       }
     }
+     **/
+    String[] result = line.split("\\W+");
+
     return result;
   }
 }

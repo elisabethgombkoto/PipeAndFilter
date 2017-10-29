@@ -58,10 +58,13 @@ public class Run {
     List<LineFromSequenceOfWords> list = sequenceOfWordsFilter.read();
 
     for (LineFromSequenceOfWords s: list) {
+        System.out.println("List-Reference-Adresse: " + s);
       for (String a : s.get_sequenceOfwords() ) {
-        System.out.println(a);
+
+        System.out.println("    Print Lines from this Reference: " + a);
       }
     }
+      System.out.println(10%3);
 
      /*
       System.out.println("Enter 'a' or 'b' ");
