@@ -1,5 +1,7 @@
 import pmp.pipes.SimplePipe;
 import pmp.solution.ExerciseA.*;
+import pmp.solution.ExerciseB.LineConstructorFilter;
+import pmp.solution.ExerciseB.WordConstructorFilter;
 
 import java.io.File;
 import java.io.StreamCorruptedException;
@@ -68,6 +70,13 @@ public class Run {
 
   private void runB(){
     runInit();
+    input = new Input(file);
+    SimplePipe<String> pipeSource = new SimplePipe<>(input);
+
+    WordConstructorFilter wordConstructorFilter = new WordConstructorFilter(pipeSource);
+    SimplePipe<List<String>> pipeLineToWords = new SimplePipe<List<String>>(wordConstructorFilter);
+
+    LineConstructorFilter lineConstructorFilter = new LineConstructorFilter(pipeLineToWords);
   }
 
   private void runInit(){
