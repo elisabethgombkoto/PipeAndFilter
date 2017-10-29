@@ -14,7 +14,6 @@ public class Run {
     Run run = new Run();
     ClassLoader classLoader = run.getClass().getClassLoader();
     File file = new File(classLoader.getResource("./pmp/source/test").getFile());
-    Run start = new Run();
     Input input = new Input(file);
     LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input);
     SequenceOfWordsFilter sequenceOfWordsFilter = new SequenceOfWordsFilter(lineNummberFilter);

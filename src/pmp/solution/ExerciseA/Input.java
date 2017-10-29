@@ -22,8 +22,6 @@ public class Input extends Source<String> implements Readable<String>, Runnable 
     _file = file;
   }
 
-
-
   @Override
   public String read() throws StreamCorruptedException {
 
