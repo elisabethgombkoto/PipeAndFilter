@@ -5,45 +5,10 @@ import java.io.StreamCorruptedException;
 import java.util.List;
 
 /**
- * Created by Elisabeth on 23.10.2017.
+ * Created by Elisabeth on 20.10.2017.
  */
 public class Run {
-/*
-    private String _sourcePath = "";
-    private String _destPath = "";
-    private String _work = "";
 
-
-     public Run (String work){
-
-         _sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test";
-         _destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
-
-
-         _work = work;
-     }
- *
-     public String readSource(){
-         Input input = new Input(_sourcePath);
-       LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input)
-       String list = null;
-       try {
-         list = input.read();
-       } catch (StreamCorruptedException e) {
-
-       }
-       return list;
-     }
-
-     public void print(){
-       String source = readSource();
-       if (source.isEmpty()) {
-         System.out.print("empty");
-       }else {
-         System.out.print(source);
-       }
-     }
-*/
   public static void main(String[] args) throws StreamCorruptedException {
 
     Run run = new Run();
