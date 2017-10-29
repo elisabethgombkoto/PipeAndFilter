@@ -74,7 +74,8 @@ public class Run {
 
     for (int i= 0; i<lines.size(); i++) {
       Line line = lines.get(i);
-      System.out.print(line.get_lineIndex() + " ");
+      System.out.print("Die "+line.get_lineIndex() + ". Line enthält: ");
+      System.out.println(line.get_sequenceOfwords().size()+" Wörter.");
       for (int j= 0; j< line.get_sequenceOfwords(). size(); j++) {
         System.out.print(line.get_sequenceOfwords().get(j));
       }

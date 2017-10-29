@@ -50,7 +50,7 @@ public class SequenceOfWordsFilter extends DataTransformationFilter2<List<Line>,
         }
       }else { // is not a letter
         if(st!=null){ // but st include alredy something
-          words.add(st.toString()); //put to array st
+          words.add(st.toString()); //put to array st in array
           st = new StringBuilder().append(c); //builed a new Stringbuilder whit the NOT letter char
           words.add(st.toString()); //put to array st
           st = null;// set st to null again

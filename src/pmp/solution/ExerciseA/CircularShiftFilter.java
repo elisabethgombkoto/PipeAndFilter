@@ -4,6 +4,7 @@ import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,36 +19,35 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<Line>,Li
     super(input);
   }
 
-  @Override
-  protected List<Line> process(List<Line> entity) {
-    return null;
-  }
-/*
+
   @Override
   protected List<Line> process(List<Line> entity) {
 
     List<Line> listOfShiftedLines = new ArrayList<>();
     for (int i = 0; i<entity.size(); i++){
-      String[] words = entity.get(i).get_sequenceOfwords();
-      String[] current = words;
+      List<String> words = entity.get(i).get_sequenceOfwords();
+      List<String> current = words;
 
       for (int j = 0; j<words.length; j++){// so lange rufe ich die methode auf bis ich die line ende bin
-        String[] shiftedLines = shiftTheWordsToRight(current);
-        listOfShiftedLines.add(new Line(i, shiftedLines));
+        listOfShiftedLines.add(new Line(i, current));
+        List<String> shiftedLines = shiftTheWordsToRight(current);
         current = shiftedLines;
       }
     }
     return listOfShiftedLines;
   }
 
-  private String[] shiftTheWordsToRight(String[] currentWordsArray) {
-    String temp = currentWordsArray[currentWordsArray.length - 1];
-    for (int i = currentWordsArray.length -2; i>-1; i--){
-      currentWordsArray[i+1] = currentWordsArray[i];
+  private List<String> shiftTheWordsToRight(List<String> currentWordsArray) {
+    List<String> str = Arrays.copyOf(currentWordsArray, currentWordsArray.length);
+    String temp = str[str.length - 1];
+    for (int i = str.length -2; i>-1; i--){
+      str[i+1] = str[i];
     }
-    currentWordsArray[0]= temp;
-    return currentWordsArray;
+    str[0]= temp;
+    return str;
+
   }
-  */
+
+
 }
 
