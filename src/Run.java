@@ -98,7 +98,7 @@ public class Run {
 
   private void runInit(){
     classLoader = getClass().getClassLoader();
-    file = new File(classLoader.getResource("./pmp/source/test.txt").getFile());
+    file = new File(classLoader.getResource("./pmp/source/aliceInWonderland.txt").getFile());
 
   }
 
