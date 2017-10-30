@@ -1,10 +1,9 @@
 package pmp.solution.ExerciseA;
 
-import pmp.filter.DataTransformationFilter2;
-import pmp.interfaces.Readable;
+import pmp.bib.filter.DataTransformationFilter2;
+import pmp.bib.interfaces.Readable;
 
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
 
 /**
  * Created by Elisabeth on 27.10.2017.

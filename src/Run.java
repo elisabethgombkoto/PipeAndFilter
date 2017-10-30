@@ -1,4 +1,4 @@
-import pmp.pipes.SimplePipe;
+import pmp.bib.pipes.SimplePipe;
 import pmp.solution.ExerciseA.*;
 import pmp.solution.ExerciseB.LineConstructorFilter;
 import pmp.solution.ExerciseB.WordConstructorFilter;
@@ -51,7 +51,7 @@ public class Run {
     SimplePipe<List<LineFromSequenceOfWords>> sp3 = new SimplePipe<List<LineFromSequenceOfWords>>(sequenceOfWordsFilter);
 
     circularShiftFilter = new CircularShiftFilter(sp3);
-    SimplePipe<List<LineFromSequenceOfWords>> sp4 = new SimplePipe<List<LineFromSequenceOfWords>>((pmp.interfaces.Readable<List<LineFromSequenceOfWords>>) circularShiftFilter);
+    SimplePipe<List<LineFromSequenceOfWords>> sp4 = new SimplePipe<List<LineFromSequenceOfWords>>((pmp.bib.interfaces.Readable<List<LineFromSequenceOfWords>>) circularShiftFilter);
 
     alphabeticOrdered = new AlphabeticallyOrderedCircularShifts(sp4);
 
@@ -80,7 +80,7 @@ public class Run {
     SimplePipe<List<LineFromSequenceOfWords>> sp3 = new SimplePipe<List<LineFromSequenceOfWords>>(lineConstructorFilter);
 
     circularShiftFilter = new CircularShiftFilter(sp3);
-    SimplePipe<List<LineFromSequenceOfWords>> sp4 = new SimplePipe<List<LineFromSequenceOfWords>>((pmp.interfaces.Readable<List<LineFromSequenceOfWords>>) circularShiftFilter);
+    SimplePipe<List<LineFromSequenceOfWords>> sp4 = new SimplePipe<List<LineFromSequenceOfWords>>((pmp.bib.interfaces.Readable<List<LineFromSequenceOfWords>>) circularShiftFilter);
 
     alphabeticOrdered = new AlphabeticallyOrderedCircularShifts(sp4);
 

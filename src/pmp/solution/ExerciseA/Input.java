@@ -1,13 +1,9 @@
 package pmp.solution.ExerciseA;
 
-import pmp.filter.Source;
-import pmp.interfaces.Readable;
+import pmp.bib.filter.Source;
+import pmp.bib.interfaces.Readable;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.CharBuffer;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**

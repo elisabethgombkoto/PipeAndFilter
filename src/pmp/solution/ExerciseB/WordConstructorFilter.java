@@ -1,8 +1,7 @@
 package pmp.solution.ExerciseB;
 
-import pmp.filter.DataTransformationFilter2;
-import pmp.interfaces.Readable;
-import pmp.pipes.SimplePipe;
+import pmp.bib.filter.DataTransformationFilter2;
+import pmp.bib.interfaces.Readable;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;

@@ -1,11 +1,11 @@
-package pmp.filter;
+package pmp.bib.filter;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
 
-import pmp.interfaces.IOable;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
+import pmp.bib.interfaces.IOable;
+import pmp.bib.interfaces.Readable;
+import pmp.bib.interfaces.Writeable;
 
 /* This is the most abstract filter class in PmP. Any filter in the pipeline should derive somehow from this
  * class. It is responsible for:

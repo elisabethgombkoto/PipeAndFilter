@@ -1,8 +1,8 @@
 package pmp.solution.ExerciseA;
 
-import pmp.filter.DataTransformationFilter2;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
+import pmp.bib.filter.DataTransformationFilter2;
+import pmp.bib.interfaces.Readable;
+import pmp.bib.interfaces.Writeable;
 import pmp.solution.entities.LineFromSequenceOfWords;
 
 import java.security.InvalidParameterException;
