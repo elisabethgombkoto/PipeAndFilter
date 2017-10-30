@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>pmp.solution.entities.LineFromSequenceOfWords</OriginalElement>
+  <nodes>
+    <node x="1808.2132107023413" y="0.0">pmp.interfaces.Writeable</node>
+    <node x="369.0" y="688.0">pmp.solution.ExerciseA.CircularShiftFilter</node>
+    <node x="1064.9740802675583" y="421.5">pmp.filter.DataTransformationFilter2</node>
+    <node x="2558.25" y="132.0">pmp.filter.Source</node>
+    <node x="1585.0" y="710.0">pmp.solution.ExerciseA.AlphabeticallyOrderedCircularShifts</node>
+    <node x="887.9999999999999" y="721.0">pmp.solution.ExerciseB.LineConstructorFilter</node>
+    <node x="2161.0" y="721.0">pmp.solution.ExerciseA.LineSeparatorFilter</node>
+    <node x="1610.940217391304" y="929.0">Run</node>
+    <node x="2727.75" y="454.0">pmp.solution.ExerciseA.Input</node>
+    <node x="405.6824136008918" y="210.0">java.io.Serializable</node>
+    <node x="0.0" y="710.0">pmp.solution.ExerciseA.SequenceOfWordsFilter</node>
+    <node x="1797.0882107023413" y="210.0">pmp.interfaces.IOable</node>
+    <node x="1250.0" y="721.0">pmp.solution.ExerciseB.WordConstructorFilter</node>
+    <node x="363.2686733556293" y="388.0">pmp.solution.entities.LineFromSequenceOfWords</node>
+    <node x="2312.0" y="410.0">pmp.pipes.SimplePipe</node>
+    <node x="533.6824136008918" y="199.0">java.lang.Comparable</node>
+    <node x="2546.7161371237453" y="0.0">pmp.interfaces.Readable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="pmp.solution.ExerciseA.Input" target="pmp.interfaces.Readable">
+      <point x="38.25" y="-49.0" />
+      <point x="2842.5" y="368.0" />
+      <point x="2889.75" y="368.0" />
+      <point x="2889.75" y="72.0" />
+      <point x="2644.7161371237453" y="72.0" />
+      <point x="42.0" y="26.0" />
+    </edge>
+    <edge source="pmp.solution.ExerciseA.CircularShiftFilter" target="pmp.solution.entities.LineFromSequenceOfWords">
+      <point x="-124.75" y="-70.5" />
+      <point x="493.75" y="638.0" />
+      <point x="549.7686733556293" y="638.0" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="pmp.solution.entities.LineFromSequenceOfWords" target="java.io.Serializable">
+      <point x="-93.25" y="-115.0" />
+      <point x="456.5186733556293" y="368.0" />
+      <point x="459.6824136008918" y="368.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="pmp.interfaces.IOable" target="pmp.interfaces.Writeable">
+      <point x="-21.0" y="-15.0" />
+      <point x="1818.0882107023413" y="92.0" />
+      <point x="1877.2132107023413" y="92.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="Run" target="pmp.solution.ExerciseA.Input">
+      <point x="188.30769230769238" y="-170.0" />
+      <point x="2003.2479096989964" y="909.0" />
+      <point x="2809.75" y="909.0" />
+      <point x="2809.75" y="668.0" />
+      <point x="2842.5" y="668.0" />
+      <point x="38.25" y="49.0" />
+    </edge>
+    <edge source="pmp.solution.entities.LineFromSequenceOfWords" target="java.lang.Comparable">
+      <point x="93.25" y="-115.0" />
+      <point x="643.0186733556293" y="368.0" />
+      <point x="615.6824136008918" y="368.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="pmp.solution.ExerciseA.SequenceOfWordsFilter" target="pmp.filter.DataTransformationFilter2">
+      <point x="87.25" y="-48.5" />
+      <point x="261.75" y="648.0" />
+      <point x="1104.0574136008918" y="648.0" />
+      <point x="-195.41666666666674" y="81.5" />
+    </edge>
+    <edge source="pmp.solution.ExerciseB.LineConstructorFilter" target="pmp.filter.DataTransformationFilter2">
+      <point x="85.5" y="-37.5" />
+      <point x="1144.5" y="668.0" />
+      <point x="1260.3907469342253" y="668.0" />
+      <point x="-39.08333333333326" y="81.5" />
+    </edge>
+    <edge source="pmp.solution.ExerciseA.LineSeparatorFilter" target="pmp.filter.DataTransformationFilter2">
+      <point x="0.0" y="-37.5" />
+      <point x="2308.5" y="658.0" />
+      <point x="1494.8907469342253" y="658.0" />
+      <point x="195.41666666666674" y="81.5" />
+    </edge>
+    <edge source="pmp.solution.ExerciseA.Input" target="pmp.filter.Source">
+      <point x="-38.25" y="-49.0" />
+      <point x="2766.0" y="368.0" />
+      <point x="2718.75" y="368.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="pmp.filter.Source" target="pmp.interfaces.Writeable">
+      <point x="-80.25" y="-93.0" />
+      <point x="2638.5" y="92.0" />
+      <point x="1923.2132107023413" y="92.0" />
+      <point x="46.0" y="26.0" />
+    </edge>
+    <edge source="Run" target="pmp.pipes.SimplePipe">
+      <point x="125.53846153846143" y="-170.0" />
+      <point x="1940.4786789297655" y="889.0" />
+      <point x="2466.5" y="889.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="Run" target="pmp.solution.ExerciseB.LineConstructorFilter">
+      <point x="-62.76923076923072" y="-170.0" />
+      <point x="1752.1709866220733" y="869.0" />
+      <point x="1059.0" y="869.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="pmp.pipes.SimplePipe" target="pmp.interfaces.Writeable">
+      <point x="-103.0" y="-93.0" />
+      <point x="2363.5" y="358.0" />
+      <point x="1786.5882107023413" y="358.0" />
+      <point x="1786.5882107023413" y="82.0" />
+      <point x="1831.2132107023413" y="82.0" />
+      <point x="-46.0" y="26.0" />
+    </edge>
+    <edge source="Run" target="pmp.solution.ExerciseA.SequenceOfWordsFilter">
+      <point x="-156.92307692307668" y="-170.0" />
+      <point x="1658.0171404682274" y="899.0" />
+      <point x="261.75" y="899.0" />
+      <point x="87.25" y="48.5" />
+    </edge>
+    <edge source="pmp.solution.ExerciseB.LineConstructorFilter" target="pmp.solution.entities.LineFromSequenceOfWords">
+      <point x="-85.5" y="-37.5" />
+      <point x="973.4999999999999" y="638.0" />
+      <point x="674.1020066889628" y="638.0" />
+      <point x="124.33333333333348" y="115.0" />
+    </edge>
+    <edge source="Run" target="pmp.solution.ExerciseA.AlphabeticallyOrderedCircularShifts">
+      <point x="0.0" y="-170.0" />
+      <point x="1814.940217391304" y="849.0" />
+      <point x="1724.0" y="849.0" />
+      <point x="-139.0" y="48.5" />
+    </edge>
+    <edge source="pmp.solution.ExerciseA.CircularShiftFilter" target="pmp.filter.DataTransformationFilter2">
+      <point x="124.75" y="-70.5" />
+      <point x="743.25" y="658.0" />
+      <point x="1182.2240802675583" y="658.0" />
+      <point x="-117.25" y="81.5" />
+    </edge>
+    <edge source="pmp.solution.ExerciseA.SequenceOfWordsFilter" target="pmp.solution.entities.LineFromSequenceOfWords">
+      <point x="-87.25" y="-48.5" />
+      <point x="87.25" y="638.0" />
+      <point x="425.4353400222958" y="638.0" />
+      <point x="-124.33333333333348" y="115.0" />
+    </edge>
+    <edge source="pmp.pipes.SimplePipe" target="pmp.interfaces.Readable">
+      <point x="103.0" y="-93.0" />
+      <point x="2569.5" y="338.0" />
+      <point x="2445.7161371237453" y="338.0" />
+      <point x="2445.7161371237453" y="112.0" />
+      <point x="2588.7161371237453" y="112.0" />
+      <point x="-14.0" y="26.0" />
+    </edge>
+    <edge source="pmp.solution.ExerciseA.AlphabeticallyOrderedCircularShifts" target="pmp.filter.DataTransformationFilter2">
+      <point x="0.0" y="-48.5" />
+      <point x="1863.0" y="668.0" />
+      <point x="1416.7240802675583" y="668.0" />
+      <point x="117.25" y="81.5" />
+    </edge>
+    <edge source="pmp.interfaces.IOable" target="pmp.interfaces.Readable">
+      <point x="21.0" y="-15.0" />
+      <point x="1860.0882107023413" y="102.0" />
+      <point x="2560.7161371237453" y="102.0" />
+      <point x="-42.0" y="26.0" />
+    </edge>
+    <edge source="pmp.solution.ExerciseB.WordConstructorFilter" target="pmp.filter.DataTransformationFilter2">
+      <point x="0.0" y="-37.5" />
+      <point x="1407.5" y="668.0" />
+      <point x="1338.5574136008918" y="668.0" />
+      <point x="39.08333333333326" y="81.5" />
+    </edge>
+    <edge source="pmp.filter.DataTransformationFilter2" target="pmp.interfaces.IOable">
+      <point x="0.0" y="-81.5" />
+      <point x="1299.4740802675583" y="368.0" />
+      <point x="1818.0882107023413" y="368.0" />
+      <point x="-21.0" y="15.0" />
+    </edge>
+    <edge source="pmp.filter.Source" target="pmp.interfaces.Readable">
+      <point x="80.25" y="-93.0" />
+      <point x="2799.0" y="82.0" />
+      <point x="2616.7161371237453" y="82.0" />
+      <point x="14.0" y="26.0" />
+    </edge>
+    <edge source="Run" target="pmp.solution.ExerciseA.CircularShiftFilter">
+      <point x="-94.15384615384619" y="-170.0" />
+      <point x="1720.7863712374578" y="879.0" />
+      <point x="743.25" y="879.0" />
+      <point x="124.75" y="70.5" />
+    </edge>
+    <edge source="Run" target="pmp.solution.ExerciseA.LineSeparatorFilter">
+      <point x="94.15384615384619" y="-170.0" />
+      <point x="1909.0940635451502" y="879.0" />
+      <point x="2382.25" y="879.0" />
+      <point x="73.75" y="37.5" />
+    </edge>
+    <edge source="Run" target="pmp.solution.ExerciseB.WordConstructorFilter">
+      <point x="-31.384615384615245" y="-170.0" />
+      <point x="1783.5556020066888" y="859.0" />
+      <point x="1407.5" y="859.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="pmp.pipes.SimplePipe" target="pmp.interfaces.IOable">
+      <point x="0.0" y="-93.0" />
+      <point x="2466.5" y="348.0" />
+      <point x="1860.0882107023413" y="348.0" />
+      <point x="21.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.699056247640619" x="3060.5347769737555" y="476.50000000000006" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
