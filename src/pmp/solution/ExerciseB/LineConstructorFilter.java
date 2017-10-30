@@ -21,20 +21,28 @@ public class LineConstructorFilter extends DataTransformationFilter2<List<String
   protected List<LineFromSequenceOfWords> process(List<String> entity) {
 
     List<LineFromSequenceOfWords> lines = new ArrayList<>();
-    int counter = 0;
+    int counter = 1;
     int lineIndex= 1;
-    String[] str = null;
+    String[] str = new String[4];
     for(int i = 0; i<entity.size(); i++){
-      str[counter] = entity.get(i);
-      if ((counter % 5)==0) {
+      str[counter-1] = entity.get(i);
+      if ((counter % 4) == 0) {
         LineFromSequenceOfWords line = new LineFromSequenceOfWords(lineIndex, str);
         lines.add(line);
-        counter = 0;
+        counter = 1;
         lineIndex++;
-        str = null;
+        str = new String[6];
+      }else{
+        if(counter == entity.size()){
+          LineFromSequenceOfWords line = new LineFromSequenceOfWords(lineIndex, str);
+          lines.add(line);
+        }else {
+          counter++;
+        }
       }
-      counter++;
     }
+    LineFromSequenceOfWords line = new LineFromSequenceOfWords(lineIndex, str);
+    lines.add(line);
     return lines;
   }
 }

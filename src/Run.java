@@ -68,7 +68,7 @@ public class Run {
     }
   }
 
-  private void runB(){
+  private void runB() throws StreamCorruptedException {
     runInit();
     input = new Input(file);
     SimplePipe<String> pipeSource = new SimplePipe<>(input);
@@ -77,6 +77,16 @@ public class Run {
     SimplePipe<List<String>> pipeLineToWords = new SimplePipe<List<String>>(wordConstructorFilter);
 
     LineConstructorFilter lineConstructorFilter = new LineConstructorFilter(pipeLineToWords);
+    List<LineFromSequenceOfWords> list = lineConstructorFilter.read();
+
+    for (LineFromSequenceOfWords s: list) {
+      System.out.println();
+      System.out.print("Index: " + s.get_lineIndex() + "   ");
+      for (String a : s.get_sequenceOfwords() ) {
+
+        System.out.print(a + " ");
+      }
+    }
   }
 
   private void runInit(){
