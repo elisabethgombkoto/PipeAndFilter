@@ -77,7 +77,14 @@ public class Run {
     SimplePipe<List<String>> pipeLineToWords = new SimplePipe<List<String>>(wordConstructorFilter);
 
     LineConstructorFilter lineConstructorFilter = new LineConstructorFilter(pipeLineToWords);
-    List<LineFromSequenceOfWords> list = lineConstructorFilter.read();
+    SimplePipe<List<LineFromSequenceOfWords>> sp3 = new SimplePipe<List<LineFromSequenceOfWords>>(lineConstructorFilter);
+
+    circularShiftFilter = new CircularShiftFilter(sp3);
+    SimplePipe<List<LineFromSequenceOfWords>> sp4 = new SimplePipe<List<LineFromSequenceOfWords>>((pmp.interfaces.Readable<List<LineFromSequenceOfWords>>) circularShiftFilter);
+
+    alphabeticOrdered = new AlphabeticallyOrderedCircularShifts(sp4);
+
+    List<LineFromSequenceOfWords> list = alphabeticOrdered.read();
 
     for (LineFromSequenceOfWords s: list) {
       System.out.println();
@@ -95,69 +102,12 @@ public class Run {
 
   }
 
-
-/*
-    private String _sourcePath = "";
-    private String _destPath = "";
-    private String _work = "";
-
-
-     public Run (String work){
-
-         _sourcePath = System.getProperty("user.dir") + "\\src\\pmp\\source\\test.txt";
-         _destPath = System.getProperty("user.dir") + "\\src\\pmp\\source\\dest.txt";
-
-
-         _work = work;
-     }
- *
-     public String readSource(){
-         Input input = new Input(_sourcePath);
-       LineSeparatorFilter lineNummberFilter = new LineSeparatorFilter(input)
-       String list = null;
-       try {
-         list = input.read();
-       } catch (StreamCorruptedException e) {
-
-       }
-       return list;
-     }
-
-     public void print(){
-       String source = readSource();
-       if (source.isEmpty()) {
-         System.out.print("empty");
-       }else {
-         System.out.print(source);
-       }
-     }
-*/
   public static void main(String[] args) throws StreamCorruptedException {
     System.out.println("Enter 'a' or 'b' ");
     Scanner scanner = new Scanner(System.in);
     String selected = scanner.nextLine();
     System.out.println("You selected " + selected);
     Run run = new Run(selected);
-
-
-
-
-
-
-     /*
-      System.out.println("Enter 'a' or 'b' ");
-      Scanner scanner = new Scanner(System.in);
-      String selected = scanner.nextLine();
-      System.out.println("You selected " + selected);
-
-      Run start = new Run(selected);
-
-
-      start.print();
-
-*/
-
-
 
   }
 }
