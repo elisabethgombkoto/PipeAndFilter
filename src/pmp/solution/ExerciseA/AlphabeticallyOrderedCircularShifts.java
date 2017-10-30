@@ -1,12 +1,11 @@
 package pmp.solution.ExerciseA;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
+import pmp.solution.entities.LineFromSequenceOfWords;
 
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

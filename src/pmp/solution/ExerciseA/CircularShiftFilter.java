@@ -3,6 +3,7 @@ package pmp.solution.ExerciseA;
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
+import pmp.solution.entities.LineFromSequenceOfWords;
 
 import java.io.File;
 import java.io.FileNotFoundException;

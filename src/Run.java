@@ -2,10 +2,10 @@ import pmp.pipes.SimplePipe;
 import pmp.solution.ExerciseA.*;
 import pmp.solution.ExerciseB.LineConstructorFilter;
 import pmp.solution.ExerciseB.WordConstructorFilter;
+import pmp.solution.entities.LineFromSequenceOfWords;
 
 import java.io.File;
 import java.io.StreamCorruptedException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

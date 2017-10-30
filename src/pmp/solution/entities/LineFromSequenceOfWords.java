@@ -1,11 +1,6 @@
-package pmp.solution.ExerciseA;
-
-import pmp.interfaces.IOable;
-import pmp.interfaces.Readable;
-import pmp.pipes.SimplePipe;
+package pmp.solution.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Elisabeth on 28.10.2017.
